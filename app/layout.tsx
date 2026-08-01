@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Geist_Mono, Instrument_Sans } from "next/font/google";
+import { Geist_Mono, IBM_Plex_Sans, Source_Sans_3 } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/shared/navbar";
 
-const instrumentSansHeading = Instrument_Sans({subsets:['latin'],variable:'--font-heading'});
+const sourceSans3Heading = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const geistMono = Geist_Mono({subsets:['latin'],variable:'--font-mono'});
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "FixItNow",
@@ -20,8 +27,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", inter.variable, "font-mono", geistMono.variable, instrumentSansHeading.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistMono.variable,
+        "font-sans",
+        ibmPlexSans.variable,
+        sourceSans3Heading.variable,
+      )}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
