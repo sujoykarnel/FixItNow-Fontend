@@ -65,3 +65,13 @@ export type IService = {
 export type ServiceProps = {
   service: IService;
 };
+
+export type IMe = {
+  success: boolean;
+  message: string;
+  data: IUser;
+};
+
+export type NavbarProps = {
+  user: IMe;
+};

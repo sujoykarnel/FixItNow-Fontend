@@ -22,7 +22,7 @@ export function ServiceCard({ service }: ServiceProps) {
           <Badge>{service.category.name}</Badge>
           <Badge variant={"secondary"} className="font-bold">
             <Receipt />
-            {service.price}
+            {service.price}/-
           </Badge>
         </div>
         <CardTitle>{service.title}</CardTitle>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   User,
@@ -12,7 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +21,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NavbarProps } from "@/lib/types";
+import { logout } from "@/service/logout";
+import { toast } from "sonner";
 
 const navLinks = [
   { label: "Services", href: "/" },
@@ -36,8 +39,16 @@ const userMenuItems = [
   { label: "Settings", href: "/settings", icon: Settings },
 ];
 
-export function Navbar() {
+export function Navbar({ user }: NavbarProps) {
   const pathname = usePathname();
+
+  const router = useRouter();
+
+  const handleLogoutButton = async () => {
+    await logout();
+    toast.success("User logout successful");
+    router.push("/login");
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -81,16 +92,17 @@ export function Navbar() {
               className="relative h-9 w-9 rounded-full p-0"
             >
               <Avatar className="h-9 w-9">
-                <AvatarImage src="/thoughtful-artist.png" alt="User avatar" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarFallback>
+                  <User className="w-4 h-4 text-primary" />
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel className="flex flex-col gap-0.5">
-              <span className="text-sm font-medium">Jane Doe</span>
+              <span className="text-sm font-medium">{user?.data?.name}</span>
               <span className="text-xs font-normal text-muted-foreground">
-                jane@acme.com
+                {user?.data?.email}
               </span>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -103,7 +115,10 @@ export function Navbar() {
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">
+            <DropdownMenuItem
+              onClick={handleLogoutButton}
+              className="cursor-pointer text-destructive focus:text-destructive"
+            >
               <LogOut className="mr-2 h-4 w-4" />
               Log out
             </DropdownMenuItem>
