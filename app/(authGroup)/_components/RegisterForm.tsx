@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
 
 export function RegisterForm() {
   const [state, action, pending] = useActionState(registerAction, false);
@@ -70,6 +71,13 @@ export function RegisterForm() {
         </Select>
 
         <Button type="submit">{pending ? "Submitting..." : "Register"}</Button>
+        <p>
+          Have any account? Please{" "}
+          <Link href={"/login"} className="text-blue-600 underline ">
+            login
+          </Link>{" "}
+          here.
+        </p>
       </Card>
     </form>
   );

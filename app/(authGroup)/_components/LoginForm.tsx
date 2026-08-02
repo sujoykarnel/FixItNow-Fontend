@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useActionState, useEffect } from "react";
 import { loginAction } from "../_actions/authAction";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function LoginForm() {
   const [state, action, pending] = useActionState(loginAction, false);
@@ -37,6 +38,13 @@ export function LoginForm() {
           required
         />
         <Button type="submit">{pending ? "Submitting..." : "Login"}</Button>
+        <p>
+          Are you new? Please{" "}
+          <Link href={"/register"} className="text-blue-600 underline ">
+            register
+          </Link>{" "}
+          here.
+        </p>
       </Card>
     </form>
   );

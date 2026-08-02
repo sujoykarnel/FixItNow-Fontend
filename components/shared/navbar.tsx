@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
-  { label: "Dashboard", href: "/" },
+  { label: "Services", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "Team", href: "/team" },
   { label: "Reports", href: "/reports" },

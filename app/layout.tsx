@@ -42,7 +42,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Toaster position="top-right" richColors />
         <Navbar />
-        {children}
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
+          {children}
+        </main>
       </body>
     </html>
   );
