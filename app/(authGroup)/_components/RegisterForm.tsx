@@ -3,28 +3,38 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useActionState, useEffect } from "react";
-import { loginAction } from "../_actions/authAction";
+import { useActionState, useEffect, useState } from "react";
+import { registerAction } from "../_actions/authAction";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function RegisterForm() {
-  const [state, action, pending] = useActionState(loginAction, false);
+  const [state, action, pending] = useActionState(registerAction, false);
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     if (!state) return;
     if (state.success) {
-      toast.success(state.message || "Login successful");
+      toast.success(state.message || "Registration successful");
     }
 
     if (!state.success) {
-      toast.error(state.message || "login failed");
+      toast.error(state.message || "Ragistration failed");
     }
   }, [state]);
 
   return (
     <form action={action} className="space-y-4">
       <Card className="p-5 space-y-4">
-        <Input name="Name" type="text" placeholder="Enter Your Name" required />
+        <Input name="name" type="text" placeholder="Enter Your Name" required />
         <Input
           name="email"
           type="email"
@@ -37,17 +47,29 @@ export function RegisterForm() {
           placeholder="Enter Your Password"
           required
         />
-        <select
-          name="role"
+        <Input
+          name="phone"
+          type="number"
+          placeholder="Enter Your Phone"
           required
-          className="border rounded-md h-10 px-3 w-full"
-        >
-          <option value="">Select Role</option>
-          <option value="customer">Customer</option>
-          <option value="technician">Technician</option>
-        </select>
+        />
 
-        <Button type="submit">{pending ? "Submitting..." : "Login"}</Button>
+        <input type="hidden" name="role" value={role} />
+
+        <Select value={role} onValueChange={setRole}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select a Role" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Roles</SelectLabel>
+              <SelectItem value="customer">Customer</SelectItem>
+              <SelectItem value="technician">Technician</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <Button type="submit">{pending ? "Submitting..." : "Register"}</Button>
       </Card>
     </form>
   );

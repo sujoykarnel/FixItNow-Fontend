@@ -3,6 +3,7 @@ import "./globals.css";
 import { Geist_Mono, IBM_Plex_Sans, Source_Sans_3 } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/shared/navbar";
+import { Toaster } from "sonner";
 
 const sourceSans3Heading = Source_Sans_3({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
+        <Toaster position="top-right" richColors />
         <Navbar />
         {children}
       </body>
