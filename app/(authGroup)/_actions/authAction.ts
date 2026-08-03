@@ -49,11 +49,11 @@ export const loginAction = async (
     const decodedToken = jwt.decode(result.data.accessToken) as JwtPayload;
 
     if (decodedToken.role === "CUSTOMER") {
-      redirect("/customer-dashboard");
+      redirect("/dashboard/customer");
     } else if (decodedToken.role === "TECHNICIAN") {
-      redirect("/technician-dashboard");
+      redirect("/dashboard/technician");
     } else if (decodedToken.role === "ADMIN") {
-      redirect("/admin-dashboard");
+      redirect("/dashboard/admin");
     }
   }
 

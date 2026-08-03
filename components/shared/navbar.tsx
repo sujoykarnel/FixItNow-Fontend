@@ -26,17 +26,10 @@ import { logout } from "@/service/logout";
 import { toast } from "sonner";
 
 const navLinks = [
-  { label: "Services", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "Team", href: "/team" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Technicians", href: "/technicians" },
   { label: "Reports", href: "/reports" },
-];
-
-const userMenuItems = [
-  { label: "Profile", href: "/profile", icon: User },
-  { label: "Dashboard", href: "/", icon: LayoutDashboard },
-  { label: "Billing", href: "/billing", icon: CreditCard },
-  { label: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function Navbar({ user }: NavbarProps) {
@@ -49,6 +42,20 @@ export function Navbar({ user }: NavbarProps) {
     toast.success("User logout successful");
     router.push("/login");
   };
+
+  const dashboardPath =
+    {
+      CUSTOMER: "/dashboard/customer",
+      TECHNICIAN: "/dashboard/technician",
+      ADMIN: "/dashboard/admin",
+    }[user?.data?.role as string] ?? "/dashboard";
+
+  const userMenuItems = [
+    { label: "Profile", href: "/profile", icon: User },
+    { label: "Dashboard", href: dashboardPath, icon: LayoutDashboard },
+    { label: "Billing", href: "/billing", icon: CreditCard },
+    { label: "Settings", href: "/settings", icon: Settings },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">

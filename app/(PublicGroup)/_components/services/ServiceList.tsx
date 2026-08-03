@@ -2,8 +2,13 @@ import { IService } from "@/lib/types";
 import { getServises } from "../../_actions/getService";
 import { ServiceCard } from "./ServiceCard";
 
-export const ServiceList = async () => {
-  const result = await getServises();
+export const ServiceList = async ({
+  searchParams,
+}: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const query = await searchParams;
+  const result = await getServises({ query });
 
   if (!result.success || !result.data?.length) {
     return (

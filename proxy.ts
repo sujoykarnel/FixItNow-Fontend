@@ -10,9 +10,7 @@ const PUBLIC_ROUTES = ["/", "/services"];
 export async function proxy(request: NextRequest) {
   const pathName = request.nextUrl.pathname;
 
-    const cookieStore = await cookies();
-    
-  
+  const cookieStore = await cookies();
 
   let accessToken = request.cookies.get("accessToken")?.value;
 
@@ -26,9 +24,7 @@ export async function proxy(request: NextRequest) {
         refreshToken,
         process.env.JWT_REFRESH_SECRET as string,
       )
-        : null;
-    
-      
+    : null;
 
   if (!decodedAccessToken && decodedRefreshToken) {
     const result = await getNewAccessToken();
@@ -58,9 +54,9 @@ export async function proxy(request: NextRequest) {
 
   if (decodedAccessToken?.success && decodedAccessToken.data) {
     userRole = (decodedAccessToken.data as JwtPayload).role;
-    }
-    
-    console.log(userRole, "proxy");
+  }
+
+  console.log(userRole, "proxy");
 
   // if user logged in and try to access auth route
   if (accessToken && AUTH_ROUTES.includes(pathName)) {
@@ -90,14 +86,14 @@ export async function proxy(request: NextRequest) {
   }
 
   // authorization
-  if (pathName.startsWith("/customer-dashboard") && userRole !== "CUSTOMER") {
+  if (pathName.startsWith("/dashboard/customer") && userRole !== "CUSTOMER") {
     return NextResponse.redirect(new URL("/not-found", request.url));
   } else if (
-    pathName.startsWith("/technician-dashboard") &&
+    pathName.startsWith("/dashboard/technician") &&
     userRole !== "TECHNICIAN"
   ) {
     return NextResponse.redirect(new URL("/not-found", request.url));
-  } else if (pathName.startsWith("/admin-dashboard") && userRole !== "ADMIN") {
+  } else if (pathName.startsWith("/dashboard/admin") && userRole !== "ADMIN") {
     return NextResponse.redirect(new URL("/not-found", request.url));
   }
 
