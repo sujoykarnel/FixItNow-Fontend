@@ -37,7 +37,9 @@ export function LoginForm() {
           placeholder="Enter Your Password"
           required
         />
-        <Button type="submit">{pending ? "Submitting..." : "Login"}</Button>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Submitting..." : "Login"}
+        </Button>
         <p>
           Are you new? Please{" "}
           <Link href={"/register"} className="text-blue-600 underline ">

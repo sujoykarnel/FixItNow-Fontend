@@ -70,7 +70,9 @@ export function RegisterForm() {
           </SelectContent>
         </Select>
 
-        <Button type="submit">{pending ? "Submitting..." : "Register"}</Button>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Submitting..." : "Register"}
+        </Button>
         <p>
           Have any account? Please{" "}
           <Link href={"/login"} className="text-blue-600 underline ">

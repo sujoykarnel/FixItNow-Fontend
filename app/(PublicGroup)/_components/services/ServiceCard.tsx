@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,6 +8,8 @@ import {
 } from "@/components/ui/card";
 import { ServiceProps } from "@/lib/types";
 import { BriefcaseBusiness, Clock, Receipt, Star, Wrench } from "lucide-react";
+
+import ServiceBookingButton from "./ServiceBookingButton";
 
 export function ServiceCard({ service }: ServiceProps) {
   return (
@@ -56,7 +57,7 @@ export function ServiceCard({ service }: ServiceProps) {
         </CardContent>
       </CardHeader>
       <CardFooter className="mt-auto">
-        <Button className="w-full">Book Service</Button>
+        <ServiceBookingButton id={service.id} />
       </CardFooter>
     </Card>
   );

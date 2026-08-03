@@ -78,7 +78,7 @@ export const registerAction = async (
     role,
   };
 
-  console.log(payload, "RegisterAction");
+
 
   const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/register`, {
     method: "POST",
@@ -90,7 +90,7 @@ export const registerAction = async (
 
   const result = await res.json();
 
-  console.log(result, "RegisterAction");
+  
 
   return result;
 };

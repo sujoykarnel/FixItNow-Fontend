@@ -75,3 +75,29 @@ export type IMe = {
 export type NavbarProps = {
   user: IMe;
 };
+
+export type IBookingStatus =
+  | "REQUESTED"
+  | "ACCEPET"
+  | "DECLINED"
+  | "IN_PROGRESS"
+  | "CANCELED"
+  | "COMPLETED";
+
+export type IBooking = {
+  id: string;
+  customerId: string;
+  serviceId: string;
+  bookingDate: string;
+  amount: number;
+  status: IBookingStatus;
+  createdAt: string;
+  updatedAt: string;
+  service: IService;
+};
+
+export type BookingState = {
+  success: boolean;
+  message: string;
+  data: IBooking;
+};
