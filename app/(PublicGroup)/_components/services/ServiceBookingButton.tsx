@@ -26,13 +26,15 @@ export default function ServiceBookingButton({ id }: Props) {
       toast.error(state.message);
     }
   }, [state]);
+    
+    console.log(id)
 
   return (
     <form action={action} className="w-full">
       <input type="hidden" name="serviceId" value={id} />
 
-      <Button type="submit" disabled={pending} className="w-full">
-        {pending ? "Booking..." : "Book Service"}
+      <Button type="submit" disabled={pending || !id} className="w-full">
+        {pending ? "Booking..." : "Book Now"}
       </Button>
     </form>
   );

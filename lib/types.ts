@@ -47,6 +47,7 @@ export type ITechnicianProfile = {
   avgRating: string;
   createdAt: string;
   updateAt: string;
+  user?: IUser;
 };
 
 export type IService = {

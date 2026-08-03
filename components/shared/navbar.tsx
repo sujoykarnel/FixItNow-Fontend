@@ -92,45 +92,51 @@ export function Navbar({ user }: NavbarProps) {
         </nav>
 
         {/* User dropdown */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="relative h-9 w-9 rounded-full p-0"
-            >
-              <Avatar className="h-9 w-9">
-                <AvatarFallback>
-                  <User className="w-4 h-4 text-primary" />
-                </AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel className="flex flex-col gap-0.5">
-              <span className="text-sm font-medium">{user?.data?.name}</span>
-              <span className="text-xs font-normal text-muted-foreground">
-                {user?.data?.email}
-              </span>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {userMenuItems.map((item) => (
-              <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href} className="cursor-pointer">
-                  <item.icon className="mr-2 h-4 w-4" />
-                  {item.label}
-                </Link>
+        {user.success ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                className="relative h-9 w-9 rounded-full p-0"
+              >
+                <Avatar className="h-9 w-9">
+                  <AvatarFallback>
+                    <User className="w-4 h-4 text-primary" />
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel className="flex flex-col gap-0.5">
+                <span className="text-sm font-medium">{user?.data?.name}</span>
+                <span className="text-xs font-normal text-muted-foreground">
+                  {user?.data?.email}
+                </span>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {userMenuItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href} className="cursor-pointer">
+                    <item.icon className="mr-2 h-4 w-4" />
+                    {item.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={handleLogoutButton}
+                className="cursor-pointer text-destructive focus:text-destructive"
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                Log out
               </DropdownMenuItem>
-            ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={handleLogoutButton}
-              className="cursor-pointer text-destructive focus:text-destructive"
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <Link href={"/login"}>
+            <Button>Login</Button>
+          </Link>
+        )}
       </div>
     </header>
   );
