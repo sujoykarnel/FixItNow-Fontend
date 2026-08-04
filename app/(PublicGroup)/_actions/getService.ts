@@ -17,10 +17,7 @@ export const getServises = async ({
     `${process.env.BACKEND_API_URL}/api/services?${params.toString()}`,
     {
       cache: "no-cache",
-      next: {
-        revalidate: 60 * 60 * 6,
-        tags: ["services"],
-      },
+      
     },
   );
 

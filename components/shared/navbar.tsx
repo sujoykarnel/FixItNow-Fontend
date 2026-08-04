@@ -100,8 +100,12 @@ export function Navbar({ user }: NavbarProps) {
                 className="relative h-9 w-9 rounded-full p-0"
               >
                 <Avatar className="h-9 w-9">
-                  <AvatarFallback>
-                    <User className="w-4 h-4 text-primary" />
+                  <AvatarFallback className="bold text-xl">
+                    {user?.data?.name
+                      ?.split(" ")
+                      .map((n: string) => n[0])
+                      .join("")
+                      .toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
               </Button>

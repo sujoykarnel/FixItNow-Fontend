@@ -1,3 +1,6 @@
+import { LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
+
 export type LoginState = {
   success: true;
   statusCode: number;
@@ -101,4 +104,12 @@ export type BookingState = {
   success: boolean;
   message: string;
   data: IBooking;
+};
+
+export type ISidebarItem = {
+  label: string;
+  href: string;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
 };

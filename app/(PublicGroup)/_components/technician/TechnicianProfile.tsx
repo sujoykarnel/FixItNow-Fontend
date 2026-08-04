@@ -24,7 +24,7 @@ export const TechnicianProfile = async ({ id }: IdProps) => {
     );
   }
   return (
-    <div className="container mx-auto max-w-5xl py-10">
+    <div className="container mx-auto max-w-5xl">
       <Card className="overflow-hidden">
         <CardHeader className="bg-muted/40">
           <div className="flex flex-col gap-6 md:flex-row md:items-center">
@@ -151,7 +151,11 @@ export const TechnicianProfile = async ({ id }: IdProps) => {
           {/* Services */}
           <div>
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Services</h2>
+              <h2 className="text-xl font-semibold">Service</h2>
+
+              {/* <Badge variant="secondary">
+                {data.service.length} Service{data.service.length !== 1 && "s"}
+              </Badge> */}
             </div>
 
             {data.service.length === 0 ? (
@@ -174,7 +178,7 @@ export const TechnicianProfile = async ({ id }: IdProps) => {
                           </p>
                         </div>
 
-                        <Badge className="shrink-0">${service.price}</Badge>
+                        <Badge className="shrink-0">৳{service.price}</Badge>
                       </div>
                     </CardContent>
                   </Card>
@@ -204,7 +208,7 @@ export const TechnicianProfile = async ({ id }: IdProps) => {
                     <CardContent className="space-y-2 p-4">
                       <div className="flex items-center justify-between">
                         <p className="font-semibold">
-                          {review.user?.name ?? "Anonymous"}
+                          {review.customer?.name ?? "Anonymous"}
                         </p>
 
                         <div className="flex items-center gap-1">

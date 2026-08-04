@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/card";
 import { ServiceProps } from "@/lib/types";
 import {
+  Banknote,
   BriefcaseBusiness,
   Clock,
-  Receipt,
   Star,
   User,
   Wrench,
@@ -33,7 +33,7 @@ export function ServiceCard({ service }: ServiceProps) {
           <Badge>{service.category.name}</Badge>
 
           <Badge variant="secondary" className="font-bold">
-            <Receipt className="mr-1 h-4 w-4" />৳{service.price}
+            <Banknote className="mr-1 h-4 w-4" />৳{service.price}
           </Badge>
         </div>
 
