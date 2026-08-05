@@ -82,11 +82,12 @@ export type NavbarProps = {
 
 export type IBookingStatus =
   | "REQUESTED"
-  | "ACCEPET"
+  | "ACCEPTED"
   | "DECLINED"
+  | "PAID"
   | "IN_PROGRESS"
-  | "CANCELED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | "CANCELLED";
 
 export type IBooking = {
   id: string;
