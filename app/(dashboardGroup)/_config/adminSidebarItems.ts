@@ -8,8 +8,8 @@ export const ADMIN_SIDEBAR_ITEMS: ISidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
-    label: "My Booking",
-    href: "/dashboard/admin/bookings",
+    label: "Categories",
+    href: "/dashboard/admin/categories",
     icon: BookIcon,
   },
 ];

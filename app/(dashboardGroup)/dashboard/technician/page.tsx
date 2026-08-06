@@ -87,7 +87,10 @@ export default async function TechnicianProfile() {
 
               <Button>
                 <Pencil className="mr-2 h-4 w-4" />
-                Edit Profile
+
+                <Link href={"/dashboard/technician/update-profile"}>
+                  Edit Profile
+                </Link>
               </Button>
             </div>
 

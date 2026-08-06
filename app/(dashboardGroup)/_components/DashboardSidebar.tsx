@@ -38,7 +38,11 @@ export const DashboardSidebar = ({ user }: NavbarProps) => {
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton asChild isActive={pathname === item.href}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === item.href}
+                    className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+                  >
                     <Link href={item.href}>
                       <item.icon />
                       <span>{item.label}</span>

@@ -37,6 +37,7 @@ export type ICategory = {
   discription: string;
   createdAt: string;
   updateAt: string;
+  servicesCount?:number
 };
 
 export type ITechnicianProfile = {
