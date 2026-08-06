@@ -4,7 +4,7 @@ import { getMe } from "@/service/getMe";
 
 export const getTechnician = async () => {
   const user = await getMe();
-  console.log(user);
+  
   const res = await fetch(
     `${process.env.BACKEND_API_URL}/api/technicians/${user.data.techinicianProfile.id}`,
     {

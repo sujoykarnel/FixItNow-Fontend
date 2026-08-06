@@ -9,16 +9,18 @@ import {
   MapPin,
   Pencil,
   Phone,
+  Plus,
   Star,
   User,
 } from "lucide-react";
 import { getTechnician } from "./_actions/getTecnician";
+import Link from "next/link";
 
 export default async function TechnicianProfile() {
   const profile = await getTechnician();
   const technician = profile.data;
 
-  console.log(profile)
+  console.log(profile);
 
   return (
     <div className="mx-auto max-w-5xl p-6">
@@ -34,7 +36,9 @@ export default async function TechnicianProfile() {
 
             <Badge
               variant={
-                technician?.user?.status === "ACTIVE" ? "default" : "destructive"
+                technician?.user?.status === "ACTIVE"
+                  ? "default"
+                  : "destructive"
               }
             >
               {technician.user.status}
@@ -95,12 +99,6 @@ export default async function TechnicianProfile() {
               />
 
               <InfoItem
-                icon={<Star className="h-5 w-5" />}
-                label="Average Rating"
-                value={`${technician.avgRating} / 5`}
-              />
-
-              <InfoItem
                 icon={<Clock className="h-5 w-5" />}
                 label="Available Time"
                 value={
@@ -135,7 +133,16 @@ export default async function TechnicianProfile() {
 
           {/* Services */}
           <section>
-            <h2 className="mb-4 text-lg font-semibold">Services Offered</h2>
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-semibold">Services Offered</h2>
+
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
+                <Link href={"/dashboard/technician/service/create"}>
+                  Add New
+                </Link>
+              </Button>
+            </div>
 
             <div className="space-y-4">
               {technician.service.length > 0 ? (
@@ -151,6 +158,9 @@ export default async function TechnicianProfile() {
                           <p className="mt-1 text-sm text-muted-foreground">
                             {service.discription}
                           </p>
+                          <Badge variant={"destructive"}>
+                            ⭐ {service.avgRating.toFixed(1)}
+                          </Badge>
                         </div>
 
                         <Badge>${service.price}</Badge>
@@ -160,31 +170,6 @@ export default async function TechnicianProfile() {
                 ))
               ) : (
                 <p className="text-muted-foreground">No services available.</p>
-              )}
-            </div>
-          </section>
-
-          {/* Reviews */}
-          <section>
-            <h2 className="mb-4 text-lg font-semibold">Recent Reviews</h2>
-
-            <div className="space-y-4">
-              {technician.reviews.length > 0 ? (
-                technician.reviews.map((review: any) => (
-                  <Card key={review.id}>
-                    <CardContent className="space-y-3 p-5">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-medium">{review.customer.name}</h3>
-
-                        <Badge variant="secondary">⭐ {review.rating}/5</Badge>
-                      </div>
-
-                      <p className="text-muted-foreground">{review.comment}</p>
-                    </CardContent>
-                  </Card>
-                ))
-              ) : (
-                <p className="text-muted-foreground">No reviews yet.</p>
               )}
             </div>
           </section>

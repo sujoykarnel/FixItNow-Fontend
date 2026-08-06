@@ -37,7 +37,7 @@ export default function BookingRow({ booking }: Props) {
 
       <TableCell className="text-center">
         {booking.review?.rating
-          ? `⭐ ${booking.service.technicianProfile.avgRating}`
+          ? `⭐ ${booking.service.avgRating.toFixed(1)}`
           : "0"}
       </TableCell>
 

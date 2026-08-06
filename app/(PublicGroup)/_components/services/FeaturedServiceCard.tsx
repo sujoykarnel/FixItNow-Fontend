@@ -21,7 +21,7 @@ import {
 
 import ServiceBookingButton from "./ServiceBookingButton";
 
-export function ServiceCard({ service }: ServiceProps) {
+export function FeaturedServiceCard({ service }: ServiceProps) {
   return (
     <Card className="group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="flex items-center justify-center p-8">
@@ -30,7 +30,10 @@ export function ServiceCard({ service }: ServiceProps) {
 
       <CardHeader className="space-y-3">
         <div className="flex items-center justify-between">
-          <Badge>{service.category.name}</Badge>
+          <div className="flex gap-2">
+            <Badge>{service.category.name}</Badge>
+            <Badge>{"Featured"}</Badge>
+          </div>
 
           <Badge variant="secondary" className="font-bold">
             <Banknote className="mr-1 h-4 w-4" />৳{service.price}

@@ -7,6 +7,7 @@ export const TECHNICIAN_SIDEBAR_ITEMS: ISidebarItem[] = [
     href: "/dashboard/technician",
     icon: LayoutDashboard,
   },
+ 
   {
     label: "My Booking",
     href: "/dashboard/technician/bookings",

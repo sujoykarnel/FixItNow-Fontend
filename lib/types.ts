@@ -47,7 +47,6 @@ export type ITechnicianProfile = {
   location: string;
   availableStart: string;
   availableEnd: string;
-  avgRating: string;
   createdAt: string;
   updateAt: string;
   user?: IUser;
@@ -60,10 +59,18 @@ export type IService = {
   title: string;
   discription: string;
   price: number;
+  avgRating: number;
   createdAt: string;
   updatedAt: string;
   category: ICategory;
-  technicianProfile: ITechnicianProfile;
+  technicianProfile?: ITechnicianProfile;
+};
+
+export type ServiceState = {
+  success: true;
+  statusCode: number;
+  message: string;
+  data: IService;
 };
 
 export type ServiceProps = {
