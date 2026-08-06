@@ -29,9 +29,16 @@ export default function CustomerBookingActions({ booking }: Props) {
         </Button>
       )}
 
-      {booking.status === "COMPLETED" && (
-        <Button className="flex-1">Review</Button>
-      )}
+      {booking.status === "COMPLETED" &&
+        (booking.review ? (
+          <Button disabled className="flex-1">
+            Reviewed
+          </Button>
+        ) : (
+          <Button asChild className="flex-1">
+            <Link href={`/booking/review/${booking.id}`}>Review</Link>
+          </Button>
+        ))}
     </div>
   );
 }

@@ -32,13 +32,13 @@ export default function BookingRow({ booking }: Props) {
       </TableCell>
 
       <TableCell>
-        {booking.service?.technicianProfile?.location ?? "N/A"}
+        {booking.service?.technicianProfile?.location ?? "Not Set"}
       </TableCell>
 
       <TableCell className="text-center">
-        {booking.service?.technicianProfile?.avgRating
+        {booking.review?.rating
           ? `⭐ ${booking.service.technicianProfile.avgRating}`
-          : "N/A"}
+          : "0"}
       </TableCell>
 
       <TableCell className="text-center">৳{booking.amount}</TableCell>

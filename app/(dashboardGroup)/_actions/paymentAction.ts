@@ -13,7 +13,6 @@ export async function createPayment(bookingId: string) {
         "Content-Type": "application/json",
         Cookie: `accessToken=${accessToken}`,
       },
-      
     },
   );
 

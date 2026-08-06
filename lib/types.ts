@@ -89,6 +89,10 @@ export type IBookingStatus =
   | "COMPLETED"
   | "CANCELLED";
 
+export type IReview = {
+  rating: number;
+  comment: string;
+};
 export type IBooking = {
   id: string;
   customerId: string;
@@ -99,6 +103,7 @@ export type IBooking = {
   createdAt: string;
   updatedAt: string;
   service: IService;
+  review?: IReview;
 };
 
 export type BookingState = {

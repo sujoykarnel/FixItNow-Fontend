@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { IBooking } from "@/lib/types";
 import Link from "next/link";
-import { updateBookingStatus } from "../_actions/bookingsActions";
+import { updateBookingStatus } from "../../../_actions/bookingsActions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 

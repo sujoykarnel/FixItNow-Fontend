@@ -1,6 +1,6 @@
 import { IBooking } from "@/lib/types";
-import CustomerBookingActions from "./CustomerBookingActions";
-import TechnicianBookingActions from "./TechnicianBookingActions";
+import CustomerBookingActions from "../dashboard/customer/_components/CustomerBookingActions";
+import TechnicianBookingActions from "../dashboard/technician/_components/TechnicianBookingActions";
 import { getMe } from "@/service/getMe";
 
 type Props = {
@@ -8,10 +8,8 @@ type Props = {
 };
 
 export default async function BookingActions({ booking }: Props) {
-    const user = await getMe()
-    const role = user.data.role
-
-
+  const user = await getMe();
+  const role = user.data.role;
 
   if (role === "TECHNICIAN") {
     return <TechnicianBookingActions booking={booking} />;
