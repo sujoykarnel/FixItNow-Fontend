@@ -31,7 +31,7 @@ export default function ServiceBookingButton({ id }: Props) {
     }
   }, [router, state]);
 
-  console.log(id);
+
 
   return (
     <form action={action} className="w-full">

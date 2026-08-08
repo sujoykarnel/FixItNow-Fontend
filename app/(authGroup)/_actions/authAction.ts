@@ -17,7 +17,7 @@ export const loginAction = async (
     password,
   };
 
-  console.log(payload, "LoginAction");
+
 
   const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/login`, {
     method: "POST",
@@ -29,7 +29,7 @@ export const loginAction = async (
 
   const result = await res.json();
 
-  console.log(result, "LoginAction");
+
 
   if (result.success) {
     const cookieStore = await cookies();

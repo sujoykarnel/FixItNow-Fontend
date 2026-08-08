@@ -32,7 +32,7 @@ export function CreateServiceForm({ categories }: Props) {
   const [state, action, pending] = useActionState(createService, false);
   const [category, setCategory] = useState("");
 
-  console.log(categories);
+ 
 
   useEffect(() => {
     if (!state) return;

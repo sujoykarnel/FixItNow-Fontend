@@ -17,7 +17,6 @@ export const getCustomerBookings = async () => {
 
   const result = await res.json();
 
-  console.log(result);
 
   return result;
 };
@@ -40,7 +39,7 @@ export const getTechnicianBookings = async () => {
 
   const result = await res.json();
 
-  console.log(result);
+ 
 
   return result;
 };
@@ -48,9 +47,36 @@ export const getTechnicianBookings = async () => {
 export const updateBookingStatus = async (id: string, status: string) => {
   const accessToken = await getAccessToken();
 
+  const res = await fetch(`${process.env.BACKEND_API_URL}/api/bookings/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `accessToken=${accessToken}`,
+    },
+    body: JSON.stringify({
+      status,
+    }),
+    cache: "no-cache",
+    next: {
+      revalidate: 0,
+    },
+  });
+
+  const result = await res.json();
+
+ 
+
+  return result;
+};
+
+export const updateTechnicianBookingStatus = async (
+  id: string,
+  status: string,
+) => {
+  const accessToken = await getAccessToken();
 
   const res = await fetch(
-    `${process.env.BACKEND_API_URL}/api/bookings/${id}`,
+    `${process.env.BACKEND_API_URL}/api/technicians/bookings/${id}`,
     {
       method: "PATCH",
       headers: {
@@ -69,7 +95,6 @@ export const updateBookingStatus = async (id: string, status: string) => {
 
   const result = await res.json();
 
-  console.log(result);
 
   return result;
 };

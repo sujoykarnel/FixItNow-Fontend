@@ -22,7 +22,7 @@ export const createService = async (
     isFeatured,
   };
 
-  console.log(payload);
+ 
 
   const res = await fetch(`${process.env.BACKEND_API_URL}/api/services`, {
     method: "POST",

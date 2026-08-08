@@ -20,7 +20,7 @@ export default async function TechnicianProfile() {
   const profile = await getTechnician();
   const technician = profile.data;
 
-  console.log(profile);
+ 
 
   return (
     <div className="mx-auto max-w-5xl p-6">

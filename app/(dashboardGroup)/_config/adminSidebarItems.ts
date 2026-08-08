@@ -8,6 +8,11 @@ export const ADMIN_SIDEBAR_ITEMS: ISidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
+    label: "Users",
+    href: "/dashboard/admin/users",
+    icon: BookIcon,
+  },
+  {
     label: "Categories",
     href: "/dashboard/admin/categories",
     icon: BookIcon,

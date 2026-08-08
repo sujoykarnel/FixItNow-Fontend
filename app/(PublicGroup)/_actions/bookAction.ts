@@ -19,7 +19,7 @@ export async function bookAction(prevState: unknown, formData: FormData) {
       };
     }
 
-    console.log(serviceId, 'bookingAction')
+  
 
     const res = await fetch(`${process.env.BACKEND_API_URL}/api/bookings`, {
       method: "POST",

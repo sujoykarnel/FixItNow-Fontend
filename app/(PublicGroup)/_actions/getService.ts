@@ -11,7 +11,7 @@ export const getServises = async ({
         params.set("searchTerm", query.searchTerm as string)
     }
 
-    console.log(params.toString(), 'params')
+
 
   const res = await fetch(
     `${process.env.BACKEND_API_URL}/api/services?${params.toString()}`,

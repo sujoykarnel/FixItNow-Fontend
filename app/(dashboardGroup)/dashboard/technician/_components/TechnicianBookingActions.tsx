@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { IBooking } from "@/lib/types";
 import Link from "next/link";
-import { updateBookingStatus } from "../../../_actions/bookingsActions";
+import { updateTechnicianBookingStatus } from "../../../_actions/bookingsActions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -14,18 +14,18 @@ type Props = {
 export default function TechnicianBookingActions({ booking }: Props) {
   const router = useRouter();
   const handleBookingButton = async (status: string) => {
-    const result = await updateBookingStatus(booking.id, status);
+    const result = await updateTechnicianBookingStatus(booking.id, status);
     if (result.success) {
       toast.success(`Booking ${result.data.status.toLowerCase()}`);
       router.refresh();
     }
-    console.log(result);
+    
   };
 
   return (
     <div className="flex w-full gap-2">
       <Button asChild className="flex-1">
-        <Link href={`/bookings/${booking.id}`}>Details</Link>
+        <Link href={`/booking/${booking.id}`}>Details</Link>
       </Button>
 
       {booking.status === "REQUESTED" && (

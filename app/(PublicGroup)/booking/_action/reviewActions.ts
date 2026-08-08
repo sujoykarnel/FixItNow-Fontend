@@ -12,7 +12,7 @@ export async function createReview(
 ) {
     const accessToken = await getAccessToken();
     
-    console.log(bookingId)
+  
 
   const res = await fetch(
     `${process.env.BACKEND_API_URL}/api/reviews/booking/${bookingId}`,
@@ -32,7 +32,7 @@ export async function createReview(
     revalidatePath("/dashboard/customer/bookings");
   }
 
-  console.log(result);
+
 
   return result;
 }

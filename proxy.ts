@@ -56,7 +56,6 @@ export async function proxy(request: NextRequest) {
     userRole = (decodedAccessToken.data as JwtPayload).role;
   }
 
-  console.log(userRole, "proxy");
 
   // if user logged in and try to access auth route
   if (accessToken && AUTH_ROUTES.includes(pathName)) {
