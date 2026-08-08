@@ -49,7 +49,7 @@ export function FeaturedServiceCard({ service }: ServiceProps) {
         <CardContent className="space-y-3 px-0">
           <div className="flex items-center gap-2 text-sm">
             <BriefcaseBusiness className="h-4 w-4 text-primary" />
-            <span>{service.technicianProfile.experience} Years Experience</span>
+            <span>{service.technicianProfile?.experience} Years Experience</span>
           </div>
 
           <div className="flex items-center gap-2 text-sm">
@@ -57,7 +57,7 @@ export function FeaturedServiceCard({ service }: ServiceProps) {
             <span>{service.avgRating.toFixed(1)}</span>
           </div>
 
-          {service.technicianProfile.availableStart &&
+          {service.technicianProfile?.availableStart &&
             service.technicianProfile.availableEnd && (
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-primary" />
