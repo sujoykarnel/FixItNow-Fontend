@@ -28,8 +28,8 @@ import { toast } from "sonner";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Technicians", href: "/technicians" },
   { label: "Reports", href: "/reports" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar({ user }: NavbarProps) {

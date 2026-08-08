@@ -48,10 +48,9 @@ export const getTechnicianBookings = async () => {
 export const updateBookingStatus = async (id: string, status: string) => {
   const accessToken = await getAccessToken();
 
-  console.log("Hello");
 
   const res = await fetch(
-    `${process.env.BACKEND_API_URL}/api/technicians/bookings/${id}`,
+    `${process.env.BACKEND_API_URL}/api/bookings/${id}`,
     {
       method: "PATCH",
       headers: {

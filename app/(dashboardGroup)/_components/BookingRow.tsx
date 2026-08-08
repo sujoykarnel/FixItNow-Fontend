@@ -35,11 +35,7 @@ export default function BookingRow({ booking }: Props) {
         {booking.service?.technicianProfile?.location ?? "Not Set"}
       </TableCell>
 
-      <TableCell className="text-center">
-        {booking.review?.rating
-          ? `⭐ ${booking.service.avgRating.toFixed(1)}`
-          : "0"}
-      </TableCell>
+     
 
       <TableCell className="text-center">৳{booking.amount}</TableCell>
 

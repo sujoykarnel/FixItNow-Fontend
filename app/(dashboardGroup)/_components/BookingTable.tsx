@@ -22,7 +22,6 @@ const BookingTable = ({ bookings }: Props) => {
           <TableHead>Technician</TableHead>
           <TableHead className="text-center">Date</TableHead>
           <TableHead>Location</TableHead>
-          <TableHead className="text-center">Rating</TableHead>
           <TableHead className="text-center">Amount</TableHead>
           <TableHead className="text-center">Status</TableHead>
           <TableHead className="text-center">Actions</TableHead>

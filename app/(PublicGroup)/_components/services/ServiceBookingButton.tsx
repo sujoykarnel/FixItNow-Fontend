@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { bookAction } from "../../_actions/bookAction";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type Props = {
   id: string;
@@ -17,6 +18,8 @@ const initialState = {
 export default function ServiceBookingButton({ id }: Props) {
   const [state, action, pending] = useActionState(bookAction, initialState);
 
+  const router = useRouter();
+
   useEffect(() => {
     if (!state.message) return;
 
@@ -24,10 +27,11 @@ export default function ServiceBookingButton({ id }: Props) {
       toast.success(state.message);
     } else {
       toast.error(state.message);
+      router.push("/login");
     }
-  }, [state]);
-    
-    console.log(id)
+  }, [router, state]);
+
+  console.log(id);
 
   return (
     <form action={action} className="w-full">

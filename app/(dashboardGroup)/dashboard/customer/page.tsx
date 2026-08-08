@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Mail, MapPin, Phone, User } from "lucide-react";
 import { getMe } from "@/service/getMe";
 
-export default async function AdminProfile() {
+export default async function CustomerProfile() {
   const profile = await getMe();
   const user = profile.data;
 
@@ -15,7 +15,7 @@ export default async function AdminProfile() {
         <CardHeader className="border-b">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-2xl">Admin Profile</CardTitle>
+              <CardTitle className="text-2xl">Customer Profile</CardTitle>
               <p className="text-muted-foreground mt-1">
                 Manage your professional information.
               </p>

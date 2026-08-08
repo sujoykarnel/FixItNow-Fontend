@@ -1,4 +1,13 @@
 import Link from "next/link";
+import { format } from "date-fns";
+import {
+  Banknote,
+  BriefcaseBusiness,
+  Clock,
+  Star,
+  User,
+  Wrench,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,16 +19,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ServiceProps } from "@/lib/types";
-import {
-  Banknote,
-  BriefcaseBusiness,
-  Clock,
-  Star,
-  User,
-  Wrench,
-} from "lucide-react";
 
 import ServiceBookingButton from "./ServiceBookingButton";
+
+const formatTime = (time: string) => {
+  return format(new Date(`1970-01-01T${time}`), "hh:mm a");
+};
 
 export function ServiceCard({ service }: ServiceProps) {
   return (
@@ -46,7 +51,9 @@ export function ServiceCard({ service }: ServiceProps) {
         <CardContent className="space-y-3 px-0">
           <div className="flex items-center gap-2 text-sm">
             <BriefcaseBusiness className="h-4 w-4 text-primary" />
-            <span>{service.technicianProfile.experience} Years Experience</span>
+            <span>
+              {service.technicianProfile?.experience} Years Experience
+            </span>
           </div>
 
           <div className="flex items-center gap-2 text-sm">
@@ -54,13 +61,13 @@ export function ServiceCard({ service }: ServiceProps) {
             <span>{service.avgRating.toFixed(1)}</span>
           </div>
 
-          {service.technicianProfile.availableStart &&
-            service.technicianProfile.availableEnd && (
+          {service.technicianProfile?.availableStart &&
+            service.technicianProfile?.availableEnd && (
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-primary" />
                 <span>
-                  {service.technicianProfile.availableStart} -{" "}
-                  {service.technicianProfile.availableEnd}
+                  {formatTime(service.technicianProfile.availableStart)} -{" "}
+                  {formatTime(service.technicianProfile.availableEnd)}
                 </span>
               </div>
             )}
