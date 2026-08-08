@@ -18,10 +18,10 @@ const BookingTable = ({ bookings }: Props) => {
     <Table>
       <TableHeader>
         <TableRow>
+          <TableHead className="text-center">Date</TableHead>
           <TableHead>Service</TableHead>
           <TableHead>Technician</TableHead>
-          <TableHead className="text-center">Date</TableHead>
-          <TableHead>Location</TableHead>
+          <TableHead>Customer</TableHead>
           <TableHead className="text-center">Amount</TableHead>
           <TableHead className="text-center">Status</TableHead>
           <TableHead className="text-center">Actions</TableHead>

@@ -21,21 +21,17 @@ const badgeStyles = {
 export default function BookingRow({ booking }: Props) {
   return (
     <TableRow>
-      <TableCell className="font-medium">{booking.service?.title}</TableCell>
+      <TableCell className="text-center">
+        {format(new Date(booking.bookingDate), "dd MMM yyyy, hh:mm a")}
+      </TableCell>
+
+      <TableCell >{booking.service?.title}</TableCell>
 
       <TableCell>
         {booking.service?.technicianProfile?.user?.name ?? "N/A"}
       </TableCell>
 
-      <TableCell className="text-center">
-        {format(new Date(booking.bookingDate), "dd MMM yyyy, hh:mm a")}
-      </TableCell>
-
-      <TableCell>
-        {booking.service?.technicianProfile?.location ?? "Not Set"}
-      </TableCell>
-
-     
+      <TableCell>{booking.customer?.name ?? "Not Set"}</TableCell>
 
       <TableCell className="text-center">৳{booking.amount}</TableCell>
 

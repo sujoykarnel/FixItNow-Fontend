@@ -37,7 +37,7 @@ export type ICategory = {
   discription: string;
   createdAt: string;
   updateAt: string;
-  servicesCount?:number
+  servicesCount?: number;
 };
 
 export type ITechnicianProfile = {
@@ -112,6 +112,7 @@ export type IBooking = {
   updatedAt: string;
   service: IService;
   review?: IReview;
+  customer?: IUser;
 };
 
 export type BookingState = {
